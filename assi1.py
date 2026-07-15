@@ -1,89 +1,103 @@
-students = {}
+import math
 
+# Functions
+def addition(a, b):
+    return a + b
+
+def subtraction(a, b):
+    return a - b
+
+def multiplication(a, b):
+    return a * b
+
+def division(a, b):
+    if b == 0:
+        return "Error! Division by zero is not allowed."
+    return a / b
+
+def modulus(a, b):
+    if b == 0:
+        return "Error! Modulus by zero is not allowed."
+    return a % b
+
+def power(a, b):
+    return a ** b
+
+def square(a):
+    return a * a
+
+def square_root(a):
+    if a < 0:
+        return "Error! Square root of a negative number is not possible."
+    return math.sqrt(a)
+
+def factorial(a):
+    if a < 0:
+        return "Error! Factorial of a negative number is not possible."
+    return math.factorial(int(a))
+
+
+# Menu
 while True:
-    print("\n******** STUDENT MANAGEMENT SYSTEM ********")
-    print("1. Add Student")
-    print("2. Display Students")
-    print("3. Search Student")
-    print("4. Update Marks")
-    print("5. Delete Student")
-    print("6. Find Topper")
-    print("7. Find Average Marks")
-    print("8. Count Students")
-    print("9. Exit")
+    print("\n*** CALCULATOR ***")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Power")
+    print("7. Square")
+    print("8. Square Root")
+    print("9. Factorial")
+    print("10. Exit")
 
     choice = int(input("Enter your choice: "))
 
     if choice == 1:
-        roll = input("Enter Roll Number: ")
-        name = input("Enter Student Name: ")
-        marks = float(input("Enter Marks: "))
-        students[roll] = {"Name": name, "Marks": marks}
-        print("Student Added Successfully!")
+        a = float(input("Enter First Number: "))
+        b = float(input("Enter Second Number: "))
+        print("Result =", addition(a, b))
 
     elif choice == 2:
-        if len(students) == 0:
-            print("No student records found.")
-        else:
-            print("\nStudent Details:")
-            for roll, details in students.items():
-                print("Roll No:", roll)
-                print("Name:", details["Name"])
-                print("Marks:", details["Marks"])
-                print("----------------------")
+        a = float(input("Enter First Number: "))
+        b = float(input("Enter Second Number: "))
+        print("Result =", subtraction(a, b))
 
     elif choice == 3:
-        roll = input("Enter Roll Number to Search: ")
-        if roll in students:
-            print("Student Found!")
-            print("Name:", students[roll]["Name"])
-            print("Marks:", students[roll]["Marks"])
-        else:
-            print("Student Not Found!")
+        a = float(input("Enter First Number: "))
+        b = float(input("Enter Second Number: "))
+        print("Result =", multiplication(a, b))
 
     elif choice == 4:
-        roll = input("Enter Roll Number: ")
-        if roll in students:
-            new_marks = float(input("Enter New Marks: "))
-            students[roll]["Marks"] = new_marks
-            print("Marks Updated Successfully!")
-        else:
-            print("Student Not Found!")
+        a = float(input("Enter First Number: "))
+        b = float(input("Enter Second Number: "))
+        print("Result =", division(a, b))
 
     elif choice == 5:
-        roll = input("Enter Roll Number to Delete: ")
-        if roll in students:
-            del students[roll]
-            print("Student Deleted Successfully!")
-        else:
-            print("Student Not Found!")
+        a = float(input("Enter First Number: "))
+        b = float(input("Enter Second Number: "))
+        print("Result =", modulus(a, b))
 
     elif choice == 6:
-        if len(students) == 0:
-            print("No student records available.")
-        else:
-            topper_roll = max(students, key=lambda x: students[x]["Marks"])
-            print("\nTopper Details:")
-            print("Roll No:", topper_roll)
-            print("Name:", students[topper_roll]["Name"])
-            print("Marks:", students[topper_roll]["Marks"])
+        a = float(input("Enter Base Number: "))
+        b = float(input("Enter Power: "))
+        print("Result =", power(a, b))
 
     elif choice == 7:
-        if len(students) == 0:
-            print("No student records available.")
-        else:
-            total = 0
-            for details in students.values():
-                total += details["Marks"]
-            average = total / len(students)
-            print("Average Marks =", average)
+        a = float(input("Enter Number: "))
+        print("Result =", square(a))
 
     elif choice == 8:
-        print("Total Students =", len(students))
+        a = float(input("Enter Number: "))
+        print("Result =", square_root(a))
 
     elif choice == 9:
-        print("Thank You! Exiting Student Management System...")
+        a = int(input("Enter Number: "))
+        print("Result =", factorial(a))
+
+    elif choice == 10:
+        print("Thank You! Exiting Calculator...")
         break
 
     else:
-        print("Invalid Choice! Please try again.")
+        print("Invalid Choice! Please enter a number between 1 and 10.")
